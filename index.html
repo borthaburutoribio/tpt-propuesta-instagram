@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Semana TPT · Propuesta</title>
+<meta name="description" content="Una semana de contenido de Instagram para Triatlón Para Todos, armada por el bot CM de Tranquera Digital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0c;--ink:#141417;--card:#18181c;--red:#e3232c;--gold:#d9a53a;--cream:#f5f3ef;--muted:#9b9ba3;--line:rgba(245,243,239,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--black);color:var(--cream);font-family:"Inter",system-ui,sans-serif;font-size:17px;line-height:1.55;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.mono{font-family:"IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;font-size:13px}
+h1,h2,h3{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;line-height:.92;letter-spacing:.01em}
+a{color:inherit}
+
+/* barra de 3 tramos (3,8 / 180 / 42,2) */
+.splits{display:flex;gap:4px;height:6px}
+.splits i{background:var(--red)}
+.splits i:nth-child(1){flex:3.8;min-width:10px}.splits i:nth-child(2){flex:180}.splits i:nth-child(3){flex:42.2}
+
+header{padding:28px 0 48px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:56px}
+.top .who{display:flex;align-items:center;gap:12px}
+.top img{width:44px;height:44px;border-radius:50%}
+.top .mono{color:var(--muted)}
+header h1{font-size:clamp(56px,13vw,132px)}
+header h1 em{font-style:normal;color:var(--red)}
+.lead{max-width:640px;margin:22px 0 28px;font-size:19px;color:rgba(245,243,239,.85)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:36px}
+.facts div{padding:16px 12px 16px 0}
+.facts b{display:block;font-family:"Bebas Neue";font-weight:400;font-size:44px;line-height:1}
+.facts span{font-size:14px;color:var(--muted)}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.sec-h h2{font-size:clamp(44px,8vw,72px)}
+.sec-h p{color:var(--muted);max-width:420px;font-size:15px}
+
+/* días */
+.day{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:36px 0;border-top:1px solid var(--line)}
+.day:first-of-type{border-top:0;padding-top:0}
+.when b{display:block;font-family:"Bebas Neue";font-weight:400;font-size:46px;line-height:1}
+.when .mono{color:var(--red)}
+.when .cd{display:inline-block;margin-top:10px;padding:4px 8px;border:1px solid var(--line);color:var(--muted)}
+.pieces{display:flex;flex-direction:column;gap:28px;min-width:0}
+.piece{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:24px;align-items:start}
+.piece .fmt{color:var(--gold);margin-bottom:8px}
+.piece h3{font-size:34px;margin-bottom:10px}
+.cap{white-space:pre-line;font-size:15px;color:rgba(245,243,239,.82);background:var(--card);border-left:3px solid var(--red);padding:14px 16px}
+.hand{margin-top:10px;font-size:14px;color:var(--muted)}
+.hand b{color:var(--cream);font-weight:600}
+.media img{border-radius:6px;box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.story-img{max-width:230px}
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;-webkit-overflow-scrolling:touch}
+.carousel img{flex:0 0 86%;max-width:none;width:86%;scroll-snap-align:start}
+.hint{color:var(--muted);margin-top:4px}
+
+.rhythm{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:3px solid var(--red)}
+.rhythm div{padding:18px 16px 18px 0}
+.rhythm b{display:block;font-family:"Bebas Neue";font-weight:400;font-size:64px;line-height:1;color:var(--red)}
+.rhythm span{display:block;font-weight:700}
+.rhythm small{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+.goal{margin-top:28px;max-width:720px;font-size:17px;color:rgba(245,243,239,.85)}
+.goal b{color:var(--cream)}
+.strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory}
+.strip img{flex:0 0 auto;height:300px;width:auto;max-width:none;border-radius:6px;scroll-snap-align:start}
+
+/* cómo funciona */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
+.step{padding:22px 18px 22px 0;border-top:3px solid var(--red)}
+.step:nth-child(2){border-color:var(--cream)}.step:nth-child(4){border-color:var(--gold)}
+.step .mono{color:var(--muted)}
+.step h3{font-size:30px;margin:10px 0 8px}
+.step p{font-size:15px;color:rgba(245,243,239,.8)}
+.limits{margin-top:28px;font-size:15px;color:var(--muted)}
+
+/* hallazgos */
+.found{list-style:none}
+.found li{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.tag{align-self:start;justify-self:start;padding:4px 8px;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.tag.r{background:var(--red)}.tag.o{border:1px solid var(--gold);color:var(--gold)}
+.found b{display:block;margin-bottom:4px}
+.found span{color:rgba(245,243,239,.78);font-size:15px}
+
+footer{padding:40px 0 56px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .splits{margin-bottom:24px}
+
+@media (max-width:760px){
+  .day{grid-template-columns:1fr;gap:16px}
+  .piece{grid-template-columns:1fr}
+  .story-img{max-width:62%}
+  .steps{grid-template-columns:1fr 1fr}
+  .found li{grid-template-columns:1fr;gap:8px}
+  .rhythm div{padding:14px 10px 14px 0}
+  .rhythm b{font-size:48px}
+  .rhythm span{font-size:15px;line-height:1.3}
+  .rhythm small{font-size:12.5px}
+  .strip img{height:240px}
+}
+@media (max-width:400px){
+  .facts b{font-size:36px}
+  .steps{grid-template-columns:1fr}
+}
+
+/* versión PDF (imprimir / Chrome --print-to-pdf) */
+@media print{
+  @page{size:A4;margin:0}
+  html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:var(--black)}
+  body{font-size:14px}
+  .wrap{max-width:none;padding:12mm 12mm 6mm}
+  header{padding:8px 0 24px}
+  .top{margin-bottom:28px}
+  header h1{font-size:76px}
+  section{padding:28px 0}
+  .day{grid-template-columns:1fr;gap:10px;padding:20px 0}
+  .when{break-after:avoid;break-inside:avoid}
+  header + section{break-before:auto}
+  section + section{break-before:page}
+  .sec-h{break-after:avoid}
+  .piece{grid-template-columns:230px 1fr;gap:18px;break-inside:avoid}
+  .carousel{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;overflow:visible}
+  .carousel img{width:100%;flex:none}
+  .piece:has(.carousel){grid-template-columns:1fr}
+  .piece:has(.carousel) .media{max-width:none}
+  .hint{display:none}
+  .story-img{max-width:140px}
+  .media img:not(.story-img){max-width:230px}
+  .carousel img{max-width:none!important}
+  .strip{flex-wrap:wrap;overflow:visible}
+  .strip img{height:190px}
+  .steps,.found li,.rhythm{break-inside:avoid}
+  .cap{font-size:13px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="top">
+    <div class="who"><img src="logo-tpt.png" alt="Logo de Triatlón Para Todos"><span class="mono">Para Leandro · TPT</span></div>
+    <span class="mono">Propuesta</span>
+  </div>
+  <h1>Tu Instagram de octubre, <em>hecho por un bot</em></h1>
+  <p class="lead">Del 70.3 Buenos Aires al Ironman San Juan. Lo armamos con lo que ya hay en tu cuenta y con tus informes del domingo: tus frases, tus programas y tus datos. No se publicó nada: es para que veas cómo trabajaría.</p>
+  <div class="splits"><i></i><i></i><i></i></div>
+  <div class="facts">
+    <div><b>28</b><span>piezas listas</span></div>
+    <div><b>4</b><span>semanas planificadas</span></div>
+    <div><b>0</b><span>horas de diseño tuyas</span></div>
+  </div>
+</header>
+
+<section>
+  <div class="sec-h"><h2>El plan</h2><p>Lo armamos mirando tus reels: el de técnica llegó a 11.700 personas, más que tus seguidores, y tu video contando por qué creaste TPT fue el que más comentarios tuvo.</p></div>
+  <div class="rhythm">
+    <div><b>2</b><span>reels por semana</span><small>Uno de técnica y uno con vos o la comunidad</small></div>
+    <div><b>2</b><span>carruseles</span><small>Resultados, datos y técnica explicada</small></div>
+    <div><b>5</b><span>días con historias</span><small>Encuestas, cuenta regresiva, WhatsApp</small></div>
+  </div>
+  <p class="goal"><b>El objetivo no es juntar seguidores.</b> Es que te escriban más atletas que quieren mejorar, que crezca Performance y que la cuenta muestre el método. Del 7 al 13/10 arrancamos con lo que nadie publicó todavía: la Copa.</p>
+</section>
+
+<section>
+  <div class="sec-h"><h2>Semana 1 · La Copa</h2><p>Del miércoles 7 al lunes 12 de octubre. Con las imágenes, el texto y lo que tendría que hacer una persona.</p></div>
+
+  <div class="day">
+    <div class="when"><span class="mono">Miércoles</span><b>7/10</b><span class="cd mono">Carrusel + historia</span></div>
+    <div class="pieces">
+      <div class="piece">
+        <div class="media">
+          <div class="carousel">
+            <img src="png/a1.png" alt="Carrusel: 1° de 115 clubes en la Copa TriClub">
+            <img src="png/a2.png" alt="42 finishers cruzaron la meta">
+            <img src="png/a3.png" alt="27 corrían su primer 70.3">
+            <img src="png/a4.png" alt="De 18 a 69 años, en 16 categorías">
+            <img src="png/a5.png" alt="Para aplaudir: Laura Nañez, Mariano Díaz, Ivana Turrión, Hernán Menna">
+            <img src="png/a6.png" alt="4.746 km, 2.496 horas, 9 semanas">
+          </div>
+          <p class="hint mono">Deslizá → 6 placas</p>
+        </div>
+        <div>
+          <p class="fmt mono">Carrusel · resultados</p>
+          <h3>1° de 115 clubes</h3>
+          <p class="cap">El domingo ganamos la Copa TriClub del IRONMAN 70.3 Buenos Aires: primeros entre 115 clubes.
+
+42 cruzaron la meta. Para 27 era su primer 70.3 (…)
+
+Si corriste con nosotros, etiquetate en la placa 5 👇</p>
+          <p class="hand"><b>Antes de publicar:</b> los usuarios de Instagram de los atletas, para etiquetarlos.</p>
+        </div>
+      </div>
+      <div class="piece">
+        <div class="media"><img class="story-img" src="png/h1.png" alt="Historia: ¿corriste con TPT? Mandanos tu foto"></div>
+        <div>
+          <p class="fmt mono">Historia · pedido de material</p>
+          <h3>Mandanos tu foto</h3>
+          <p class="hand">Los atletas mandan sus fotos y videos de la carrera. <b>Así el bot junta material</b> para el resto del mes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="when"><span class="mono">Jueves</span><b>8/10</b><span class="cd mono">Reel + historia</span></div>
+    <div class="pieces">
+      <div class="piece">
+        <div class="media"><img class="story-img" src="png/r2.png" alt="Portada de reel: 1° de 115 clubes"></div>
+        <div>
+          <p class="fmt mono">Reel · 25 a 35 segundos</p>
+          <h3>La Copa</h3>
+          <p class="cap">44 largamos. 42 llegamos. 27 por primera vez. Y la copa vino para casa 🏆</p>
+          <p class="hand"><b>Ustedes mandan</b> los clips del 70.3: largada, bici, llegadas, el podio de Laura, el equipo con la copa. <b>El bot</b> los edita con textos y esta portada.</p>
+        </div>
+      </div>
+      <div class="piece">
+        <div class="media"><img class="story-img" src="png/h2.png" alt="Historia: dorsal, faltan 24 días para San Juan"></div>
+        <div>
+          <p class="fmt mono">Historia · cuenta regresiva</p>
+          <h3>Faltan 24</h3>
+          <p class="hand">Uno terminado, vamos por San Juan. Cada día el bot solo cambia el número.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="when"><span class="mono">Viernes</span><b>9/10</b><span class="cd mono">Historia</span></div>
+    <div class="pieces">
+      <div class="piece">
+        <div class="media"><img class="story-img" src="png/h3.png" alt="Historia: encuesta, cuál fue tu tramo más duro"></div>
+        <div>
+          <p class="fmt mono">Historia · encuesta</p>
+          <h3>¿Tu tramo más duro?</h3>
+          <p class="hand">El resultado decide de qué es el reel de técnica de la semana siguiente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="when"><span class="mono">Sábado</span><b>10/10</b><span class="cd mono">Carrusel</span></div>
+    <div class="pieces">
+      <div class="piece">
+        <div class="media">
+          <div class="carousel">
+            <img src="png/c1.png" alt="Carrusel 1: La parte de la carrera que nadie entrena">
+            <img src="png/c2.png" alt="Carrusel 2: Armá tu lugar siempre igual">
+            <img src="png/c3.png" alt="Carrusel 3: El neoprene se saca corriendo">
+            <img src="png/c4.png" alt="Carrusel 4: Cordones elásticos">
+            <img src="png/c5.png" alt="Carrusel 5: Entrená el ladrillo">
+            <img src="png/c6.png" alt="Carrusel 6: Ensayamos las transiciones con vos">
+          </div>
+          <p class="hint mono">Deslizá → 6 placas</p>
+        </div>
+        <div>
+          <p class="fmt mono">Carrusel · técnica</p>
+          <h3>Transiciones: la cuarta disciplina</h3>
+          <p class="cap">En un Full hay cuatro disciplinas, no tres. La cuarta son las transiciones, y casi nadie las entrena.
+
+Quedan 22 días para San Juan. Todavía estás a tiempo de ensayarlas (…)
+
+Guardalo para tu próximo fondo y mandáselo al que siempre tarda en la T1 😅</p>
+          <p class="hand"><b>Antes de publicar:</b> que un coach revise los 4 tips.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="when"><span class="mono">Domingo</span><b>11/10</b><span class="cd mono">Historia + posteo</span></div>
+    <div class="pieces">
+      <div class="piece">
+        <div class="media"><img class="story-img" src="png/h4.png" alt="Historia: 42 de 44 cruzaron la meta"></div>
+        <div>
+          <p class="fmt mono">Historia · cierre</p>
+          <h3>42 de 44</h3>
+          <p class="hand">Con las fotos que mandaron los atletas durante la semana.</p>
+        </div>
+      </div>
+      <div class="piece">
+        <div class="media"><img src="png/g1.png" alt="Posteo: gracias a los que corrieron con nuestra camiseta sin ser alumnos"></div>
+        <div>
+          <p class="fmt mono">Posteo · agradecimiento</p>
+          <h3>Gracias a los amigos del equipo</h3>
+          <p class="cap">En el TriClub no corrimos solo los alumnos. Algunos amigos del equipo se anotaron con TPT sin entrenar con nosotros, y sus puntos también trajeron la copa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="when"><span class="mono">Lunes</span><b>12/10</b><span class="cd mono">Reel + historia</span></div>
+    <div class="pieces">
+      <div class="piece">
+        <div class="media"><img class="story-img" src="png/r3.png" alt="Portada de reel: la Copa fue de todos, ahora vamos por más"></div>
+        <div>
+          <p class="fmt mono">Reel · vos a cámara</p>
+          <h3>La Copa fue de todos</h3>
+          <p class="cap">"Fuimos el equipo que más gente llevó a la meta: 42 finishers, y para 27 era su primer 70.3. Estoy muy orgulloso. Y ahora vamos por más: más bici, el plan bien cumplido, y que cada uno mejore su marca."</p>
+          <p class="hand"><b>Vos grabás</b> 30 a 45 segundos con el celular, con tus palabras. <b>El bot</b> le pone subtítulos, cortes y la portada. Es tu formato que más comentarios trae.</p>
+        </div>
+      </div>
+      <div class="piece">
+        <div class="media"><img class="story-img" src="png/h5.png" alt="Historia: TPT Performance, querés ir por más"></div>
+        <div>
+          <p class="fmt mono">Historia · venta</p>
+          <h3>¿Querés ir por más?</h3>
+          <p class="hand">Link directo a WhatsApp para pedir info de Performance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><h2>Semana 2 · Rumbo a San Juan</h2><p>Del 14 al 20 de octubre: técnica, la valija, Performance y la cuenta regresiva. Ya hay piezas listas.</p></div>
+  <div class="strip">
+    <img src="png/p1.png" alt="TPT Performance: entrená con tus números">
+    <img src="png/q1.png" alt="Frase de Leandro sobre por qué creó TPT">
+    <img src="png/s1.png" alt="Dorsal: faltan 18 días">
+    <img src="png/s2.png" alt="La valija para San Juan">
+    <img src="png/s3.png" alt="Un finisher TPT nunca termina solo">
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><h2>Cómo funcionaría</h2><p>El bot queda instalado en tu compu, con tu cuenta. Vos no diseñás ni escribís: elegís.</p></div>
+  <div class="steps">
+    <div class="step"><span class="mono">Vos</span><h3>Mandás material</h3><p>Fotos y clips del entrenamiento, una carrera que viene, una novedad.</p></div>
+    <div class="step"><span class="mono">El bot</span><h3>Arma la semana</h3><p>Plan, placas, reels editados y textos, con tu voz y tus colores.</p></div>
+    <div class="step"><span class="mono">Vos</span><h3>Aprobás</h3><p>Desde el celular. Lo que no te gusta, se cambia o se saca.</p></div>
+    <div class="step"><span class="mono">El bot</span><h3>Publica</h3><p>Posteos, carruseles, reels e historias, a la hora programada.</p></div>
+  </div>
+  <p class="limits">Lo que sigue siendo a mano: los stickers de historias, la música de los reels y filmar los clips.</p>
+</section>
+
+<section>
+  <div class="sec-h"><h2>Lo que vimos en tu cuenta</h2><p>Revisado el 6/10/2026, como lo ve alguien que entra por primera vez.</p></div>
+  <ul class="found">
+    <li><span class="tag r">Urgente</span><div><b>Ganaron la Copa y no está publicada</b><span>El último posteo propio es del 22/9. Lo que se ve en la grilla después son colaboraciones de otras marcas.</span></div></li>
+    <li><span class="tag r">Urgente</span><div><b>Un anuncio pago dice "Ironman noviembre 2025"</b><span>Está activo desde el 3/10 y muestra el año pasado. Además, el WhatsApp del anuncio no tiene el 9.</span></div></li>
+    <li><span class="tag r">Urgente</span><div><b>El WhatsApp de la bio no tiene el 9</b><span>wa.me/541156224730. Conviene probarlo desde un celular: así puede fallar.</span></div></li>
+    <li><span class="tag o">Perfil</span><div><b>La bio no dice qué hacen ni cómo empezar</b><span>No aparecen lo online, las sedes, los 220 atletas en 9 países ni el Ironman. Y el primer link es una playlist de Spotify.</span></div></li>
+    <li><span class="tag o">Perfil</span><div><b>Destacadas y fijados desordenados</b><span>"TECNICA RUNING", una destacada por coach y un fijado que invita a arrancar un plan el 14 de junio.</span></div></li>
+    <li><span class="tag o">Perfil</span><div><b>Siguen a 7.696 cuentas</b><span>Casi tantas como las que los siguen. Parece "follow por follow" y le resta seriedad a una cuenta verificada. Meta: menos de 1.500, de a poco y a mano.</span></div></li>
+    <li><span class="tag o">Grilla</span><div><b>Sin identidad visual propia</b><span>Las colaboraciones de otras marcas tapan lo de TPT. Con plantillas como las de arriba, la grilla queda reconocible.</span></div></li>
+  </ul>
+</section>
+
+<footer>
+  <div class="splits"><i></i><i></i><i></i></div>
+  <p>Propuesta de Tranquera Digital para Triatlón Para Todos. Contenido de muestra: no fue publicado.</p>
+</footer>
+
+</div>
+</body>
+</html>
