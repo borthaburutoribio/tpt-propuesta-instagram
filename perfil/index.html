@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>TPT · Tu perfil, ordenado (borrador)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{--black:#0a0a0c;--ink:#141416;--red:#e3232c;--gold:#d9a53a;--cream:#f5f3ef;--grey:#8d8a86;--line:#2a2a2e;
+  --display:"Bebas Neue","Arial Narrow",Impact,sans-serif;--body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--black);color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 18px 72px}
+.top{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);font-weight:600}
+.top img{width:40px;height:40px;border-radius:50%}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,12vw,104px);line-height:.9;margin:22px 0 14px;letter-spacing:.01em}
+h1 em{font-style:normal;color:var(--red)}
+.lead{font-size:18px;max-width:56ch;color:#d8d5cf}
+.note{display:inline-block;margin-top:16px;border:1px solid var(--gold);color:var(--gold);padding:6px 12px;font-size:13px;font-weight:600;letter-spacing:.04em}
+
+.switch{display:none;margin:30px auto 0;border:1px solid var(--line);width:max-content;max-width:100%}
+.switch button{font:600 14px var(--body);letter-spacing:.06em;text-transform:uppercase;background:none;color:var(--grey);border:0;padding:12px 22px;cursor:pointer}
+.switch button[aria-pressed="true"]{background:var(--red);color:#fff}
+.switch button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.stage{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px;align-items:start}
+.col{display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
+.col h2{font-family:var(--display);font-weight:400;font-size:30px;letter-spacing:.04em}
+.col.after h2{color:var(--gold)} .col.before h2{color:var(--grey)}
+
+/* teléfono */
+.phone{width:100%;max-width:380px;background:#fff;color:#111;border-radius:34px;border:8px solid #1d1d21;overflow:hidden;font-size:13.5px;line-height:1.35}
+.before .phone{filter:saturate(.6)}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 8px;font-weight:700;font-size:17px}
+.bar small{font-weight:600;color:#0a84ff;font-size:12px}
+.head{display:flex;align-items:center;gap:18px;padding:6px 16px}
+.avatar{width:78px;height:78px;border-radius:50%;flex:none;background:#0a0a0c;padding:3px;border:2px solid var(--red)}
+.avatar img{width:100%;height:100%;border-radius:50%;display:block}
+.stats{display:flex;flex:1;justify-content:space-around;text-align:center}
+.stats b{display:block;font-size:16px}
+.stats span{font-size:12px}
+.stats .hit b{color:var(--red)}
+.bio{padding:8px 16px 4px}
+.bio strong{display:block}
+.bio .cat{color:#737373}
+.bio a{color:#00376b;font-weight:600;text-decoration:none;display:block;margin-top:2px}
+.bad{background:#ffe3e4;box-shadow:0 0 0 2px #ffe3e4;border-radius:2px}
+.good{background:#fff1c9;box-shadow:0 0 0 2px #fff1c9;border-radius:2px}
+.btns{display:flex;gap:6px;padding:10px 16px}
+.btns span{flex:1;text-align:center;background:#efefef;border-radius:8px;padding:7px 0;font-weight:600;font-size:13px}
+.hl{display:flex;gap:12px;padding:6px 16px 12px;overflow-x:auto;scrollbar-width:none}
+.hl::-webkit-scrollbar{display:none}
+.hl div{flex:none;width:62px;text-align:center;font-size:10.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hl i{display:flex;align-items:center;justify-content:center;width:58px;height:58px;margin:0 auto 4px;border-radius:50%;font-style:normal;background:#d9d9d9;border:1px solid #c4c4c4}
+.after .hl i{background:var(--black);border:2px solid var(--red);color:#fff;font-family:var(--display);font-size:17px;letter-spacing:.03em;box-shadow:0 0 0 2px #fff inset}
+.after .hl div:nth-child(3n) i{border-color:var(--gold);color:var(--gold)}
+.tabs{display:flex;border-top:1px solid #dbdbdb}
+.tabs span{flex:1;text-align:center;padding:9px 0;font-size:11px;font-weight:700;letter-spacing:.08em;color:#8e8e8e}
+.tabs span:first-child{color:#111;border-top:1.5px solid #111;margin-top:-1px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.grid div{position:relative;aspect-ratio:4/5;background:#e4e4e4;overflow:hidden}
+.grid img{width:100%;height:100%;object-fit:cover;display:block}
+.pin{position:absolute;top:6px;right:6px;width:16px;height:16px;background:rgba(0,0,0,.55);border-radius:50%}
+.pin::after{content:"";position:absolute;left:5px;top:4px;width:6px;height:6px;background:#fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg)}
+.ph{display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;font-size:10.5px;font-weight:600;color:#777;height:100%;line-height:1.25}
+.ph.c1{background:#e9e2d0}.ph.c2{background:#cfd6dc}.ph.c3{background:#2b2b2b;color:#bbb}.ph.c4{background:#f0d9d9}.ph.c5{background:#d5e0d0}
+.start{height:100%;background:var(--cream);color:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:10px}
+.start b{font-family:var(--display);font-weight:400;font-size:25px;line-height:.92}
+.start b em{font-style:normal;color:var(--red)}
+.start small{font-size:8.5px;margin-top:6px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.cap{font-size:13px;color:var(--grey);max-width:380px;text-align:center}
+
+
+.after .hl i svg{width:30px;height:30px}
+.hl i svg,.cover svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.hl i svg text,.cover svg text{fill:currentColor;stroke:none;font-family:var(--display);font-size:11px}
+.hls{margin-top:64px}
+.hls h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,7vw,56px);line-height:.95;margin-bottom:8px}
+.hls>p{color:#bdb9b2;max-width:60ch;margin-bottom:26px}
+.hgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.hcard{display:grid;grid-template-columns:96px 1fr;gap:16px;border:1px solid var(--line);padding:16px;min-width:0}
+.cover{width:96px;aspect-ratio:9/16;background:var(--black);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#fff;position:relative}
+.cover::before{content:"";position:absolute;width:62px;height:62px;border-radius:50%;border:2px solid var(--red);top:50%;left:50%;transform:translate(-50%,-62%)}
+.cover.g{color:var(--gold)} .cover.g::before{border-color:var(--gold)}
+.cover svg{width:34px;height:34px;transform:translateY(-10px)}
+.cover b{font-family:var(--display);font-weight:400;font-size:13px;letter-spacing:.08em;position:absolute;bottom:22px;color:#fff}
+.hcard h3{font-family:var(--display);font-weight:400;font-size:26px;letter-spacing:.03em;line-height:1}
+.hcard ul{padding-left:18px;margin-top:8px;color:#d8d5cf;font-size:14.5px;display:grid;gap:3px}
+.hcard .from{margin-top:10px;font-size:12px;color:var(--grey)}
+.hcard .from b{color:var(--gold);font-weight:600}
+@media (max-width:400px){.hcard{grid-template-columns:78px 1fr}.cover{width:78px}}
+/* cambios */
+.changes{margin-top:64px}
+.changes h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,7vw,56px);line-height:.95;margin-bottom:24px}
+.changes ol{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:0 40px;counter-reset:n}
+.changes li{counter-increment:n;display:grid;grid-template-columns:54px 1fr;gap:6px;padding:18px 0;border-top:1px solid var(--line)}
+.changes li::before{content:counter(n);font-family:var(--display);font-size:44px;line-height:.9;color:var(--red)}
+.changes h3{font-size:17px;font-weight:700;margin-bottom:4px}
+.changes p{color:#bdb9b2;font-size:15px}
+.changes .tag{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.ask{margin-top:56px;border:1px solid var(--line);padding:24px}
+.ask h2{font-family:var(--display);font-weight:400;font-size:30px;letter-spacing:.03em;margin-bottom:10px}
+.ask ul{padding-left:20px;display:grid;gap:6px;color:#d8d5cf}
+footer{margin-top:44px;color:var(--grey);font-size:13px}
+
+@media (max-width:860px){
+  .switch{display:flex}
+  .stage{grid-template-columns:1fr;margin-top:24px}
+  .stage[data-view="after"] .before,.stage[data-view="before"] .after{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><img src="img/logo.png" alt="Escudo de Triatlón Para Todos"><span>Para Leandro · borrador del perfil · 11/11/2026</span></div>
+  <h1>Tu perfil,<br><em>ordenado.</em></h1>
+  <p class="lead">Así se vería @triatlonparatodos para alguien que entra por primera vez. Es una maqueta: en tu cuenta no se tocó nada. Lo que te guste se aplica, lo que no, se cambia.</p>
+  <span class="note">Borrador para revisar juntos</span>
+
+  <div class="switch" role="group" aria-label="Elegir vista">
+    <button type="button" id="btn-before" aria-pressed="false">Hoy</button>
+    <button type="button" id="btn-after" aria-pressed="true">Propuesta</button>
+  </div>
+
+  <div class="stage" id="stage" data-view="after">
+    <!-- HOY -->
+    <div class="col before">
+      <h2>Hoy</h2>
+      <div class="phone">
+        <div class="bar"><span>triatlonparatodos</span></div>
+        <div class="head">
+          <div class="avatar"><img src="img/logo.png" alt=""></div>
+          <div class="stats"><div><b>538</b><span>publicaciones</span></div><div><b>11,4 mil</b><span>seguidores</span></div><div class="hit"><b>7.761</b><span>seguidos</span></div></div>
+        </div>
+        <div class="bio">
+          <strong>TriatlonParaTodos</strong>
+          Triatlón Para Todos · Coaching Interactivo<br>+200 atletas con plan individual<br>Del primer 5K al Ironman 🇦🇷🌎<br>👇 Escribinos, charlamos y armamos
+          <a><span class="bad">wa.me/541156224730</span> y 1 más</a>
+        </div>
+        <div class="btns"><span>Seguir</span><span>Mensaje</span></div>
+        <div class="hl">
+          <div><i></i>CELEBITIS</div><div><i></i>TREN SUPERIOR</div><div><i></i>TECNICA RUNING</div><div><i></i>AGUSTINA</div><div><i></i>MAURO</div><div><i></i>PABLO</div><div><i></i>Carreras</div><div><i></i>LA VUELTA</div><div><i></i>VALE</div><div><i></i>TECNICA</div><div><i></i>CARO</div><div><i></i>LOGROS</div><div><i></i>TEAM COPADOS</div><div><i></i>CLINICAS</div>
+        </div>
+        <div class="tabs"><span>PUBLICACIONES</span><span>REELS</span><span>ETIQUETAS</span></div>
+        <div class="grid">
+          <div><span class="pin"></span><div class="ph c3">Fijado<br>12 de octubre</div></div>
+          <div><span class="pin"></span><div class="ph c2">Fijado<br>Yanina en Kona</div></div>
+          <div><span class="pin"></span><div class="ph c1">Fijado<br>reel de mayo</div></div>
+          <div><div class="ph c4">Los 8 héroes<br>10/11</div></div>
+          <div><div class="ph c5">Colaboración<br>de un atleta</div></div>
+          <div><div class="ph c3">Reel San Juan<br>8/11</div></div>
+          <div><div class="ph c2">Colaboración<br>de un atleta</div></div>
+          <div><div class="ph c1">Carrusel<br>5/11</div></div>
+          <div><div class="ph c5">Colaboración<br>de un atleta</div></div>
+        </div>
+      </div>
+      <p class="cap">14 destacadas con nombres sueltos, cada portada con un estilo distinto y un link de WhatsApp al que le falta el 9.</p>
+    </div>
+
+    <!-- PROPUESTA -->
+    <div class="col after">
+      <h2>Propuesta</h2>
+      <div class="phone">
+        <div class="bar"><span>triatlonparatodos</span></div>
+        <div class="head">
+          <div class="avatar"><img src="img/logo.png" alt=""></div>
+          <div class="stats"><div><b>538</b><span>publicaciones</span></div><div><b>11,4 mil</b><span>seguidores</span></div><div class="hit"><b>1.500</b><span>seguidos</span></div></div>
+        </div>
+        <div class="bio">
+          <strong>Triatlón Para Todos</strong>
+          <span class="cat">Equipo de triatlón</span><br>
+          Online y en 9 sedes · CABA, Tigre y Mendoza<br>+200 atletas con plan individual en 9 países<br>Del primer 5K al Ironman 🇦🇷🌎<br>👇 Escribinos y armamos tu plan
+          <a><span class="good">wa.me/5491156224730</span> y 2 más</a>
+        </div>
+        <div class="btns"><span>Seguir</span><span>Mensaje</span><span>WhatsApp</span></div>
+        <div class="hl" id="hl-after"></div>
+        <div class="tabs"><span>PUBLICACIONES</span><span>REELS</span><span>ETIQUETAS</span></div>
+        <div class="grid">
+          <div><span class="pin"></span><img src="img/q1.jpg" alt="Placa con la frase de Leandro: todo lo que no hay que hacer, ya lo hice"></div>
+          <div><span class="pin"></span><div class="start"><b>EMPEZÁ<br><em>ACÁ.</em></b><small>Planes · sedes · WhatsApp</small></div></div>
+          <div><span class="pin"></span><img src="img/a1.jpg" alt="Placa: 1° de 115 clubes, Copa TriClub"></div>
+          <div><img src="img/c1.jpg" alt="Carrusel de transiciones"></div>
+          <div><img src="img/p1.jpg" alt="TPT Performance: entrená con tus números"></div>
+          <div><img src="img/r3.jpg" alt="Portada de reel: la Copa fue de todos"></div>
+          <div><img src="img/g1.jpg" alt="Posteo de agradecimiento"></div>
+          <div><img src="img/a5.jpg" alt="Placa de resultados para aplaudir"></div>
+          <div><img src="img/a2.jpg" alt="Placa: 42 cruzaron la meta"></div>
+        </div>
+      </div>
+      <p class="cap">Las placas son las de la muestra de octubre: están para que veas cómo se reconoce la grilla con una sola plantilla.</p>
+    </div>
+  </div>
+
+
+  <section class="hls">
+    <h2>Las 8 destacadas</h2>
+    <p>Cada una con su portada y un orden pensado para el que llega sin conocerlos: primero cómo empezar, al final la comunidad. Las historias que ya tenés guardadas se mueven a la nueva, no se borran.</p>
+    <div class="hgrid" id="hgrid"></div>
+  </section>
+
+  <section class="changes">
+    <h2>Lo que cambia, en orden</h2>
+    <ol>
+      <li><div><h3>El WhatsApp, con el 9</h3><p>El link de la bio es wa.me/541156224730. En Argentina sin el 9 puede fallar desde algunos celulares. Pasa a ser el primer link.</p><span class="tag">Dos minutos · lo primero</span></div></li>
+      <li><div><h3>La bio dice las dos patas</h3><p>Online y en sedes. Hoy el que llega no sabe si son un grupo de plaza o un equipo internacional. Son las dos cosas.</p><span class="tag">Las cifras las confirmás vos</span></div></li>
+      <li><div><h3>De 14 destacadas a 8</h3><p>Empezá acá, Planes, Performance, Coaches, Sedes, Ironman, Técnica y Comunidad. Las de Agustina, Mauro, Pablo, Vale y Caro pasan a una sola de Coaches. No se pierde ninguna historia.</p></div></li>
+      <li><div><h3>Portadas iguales</h3><p>Negro, rojo y dorado del escudo. Se ve una cuenta cuidada antes de leer una palabra.</p></div></li>
+      <li><div><h3>Tres fijados que explican TPT</h3><p>Por qué existe (tu frase), cómo empezar, y lo último grande: la Copa, San Juan o Yanina en Kona, según el momento.</p></div></li>
+      <li><div><h3>Una plantilla para la grilla</h3><p>Las colaboraciones de los atletas siguen entrando. La diferencia es que lo de TPT se reconoce entre medio.</p></div></li>
+      <li><div><h3>Seguir a menos cuentas</h3><p>De 7.761 a menos de 1.500, a mano y de a poco, en unos seis meses. Quedan atletas, coaches, carreras y marcas amigas.</p><span class="tag">Sin apuro · nunca con apps</span></div></li>
+    </ol>
+  </section>
+
+  <section class="ask">
+    <h2>Lo que necesitamos de vos</h2>
+    <ul>
+      <li>La cifra oficial: atletas, sedes, países y coaches.</li>
+      <li>Qué significan Celebitis, La Vuelta y Team Copados, para dejarlas si son parte del equipo.</li>
+      <li>Acceso por Meta Business Suite. No hace falta contraseña.</li>
+      <li>Tu OK punto por punto antes de aplicar cada cambio.</li>
+    </ul>
+  </section>
+
+  <footer>Tranquera Digital para Triatlón Para Todos. Maqueta de trabajo: nada de esto fue publicado.</footer>
+</div>
+<script>
+(function(){
+var H=[
+ {n:'Empezá acá',i:'<path d="M6 21V4"/><path d="M6 4h11l-2.5 4L17 12H6"/>',c:['Tu frase: por qué creaste TPT','Online y en sedes: cómo funciona cada una','Cómo es la primera semana','Botón directo a WhatsApp'],f:'Nueva'},
+ {n:'Planes',i:'<rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 10h16M8 3v4M16 3v4M8 14h3M8 17h6"/>',c:['Del primer 5K al Ironman: qué plan va con cada objetivo','Qué incluye el plan individual: TrainingPeaks, ajuste semanal, ciclismo por Zoom','Cómo anotarse'],f:'Nueva'},
+ {n:'Performance',i:'<path d="M4 20V5M4 20h16"/><path d="M7 16l4-5 3 3 5-7"/><path d="M16 7h3v3"/>',c:['Qué es y para quién','Lactato, test de sudoración y análisis de datos','Yanina Minaglia y el podio en Kona','Cupos y cómo consultar'],f:'Nueva'},
+ {n:'Coaches',i:'<circle cx="12" cy="14" r="7"/><path d="M12 14V10M10 3h4M12 3v4M18 8l1.5-1.5"/>',c:['Una historia por coach: quién es, qué disciplina lleva','El día de carrera: coaches en el lugar'],f:'Agustina, Mauro, Pablo, Vale y Caro'},
+ {n:'Sedes',i:'<path d="M12 21s-6-5.6-6-10.5A6 6 0 0 1 18 10.500C18 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.2"/>',c:['Una historia por sede: días, horario y punto de encuentro','CABA, Tigre y Mendoza','También por Wellhub'],f:'Nueva'},
+ {n:'Ironman',i:'<text x="12" y="16" text-anchor="middle">140.6</text>',c:['Copa TriClub del 70.3 Buenos Aires: 1° de 115 clubes','San Juan: Ironman y 5150','Las llegadas y los debutantes','La próxima carrera, con cuenta regresiva'],f:'Carreras y Logros'},
+ {n:'Técnica',i:'<path d="M3 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>',c:['Natación, bici y running en tips de tres puntos','Tren superior y fuerza','Clínicas'],f:'Técnica, Técnica running, Tren superior y Clínicas'},
+ {n:'Comunidad',i:'<circle cx="8.500" cy="9" r="3"/><circle cx="16.500" cy="10" r="2.400"/><path d="M3 20c.4-3.500 2.600-5.500 5.500-5.500s5.100 2 5.500 5.500M15 15c3 0 5.300 1.600 6 5"/>',c:['Festejos, cumpleaños y training camps','Los atletas contando su carrera','El equipo fuera del entrenamiento'],f:'Celebitis y Team Copados. La Vuelta, según qué sea'}
+];
+var hl=document.getElementById('hl-after'),hg=document.getElementById('hgrid');
+H.forEach(function(h,k){
+  var svg='<svg viewBox="0 0 24 24" aria-hidden="true">'+h.i+'</svg>';
+  hl.insertAdjacentHTML('beforeend','<div><i>'+svg+'</i>'+h.n+'</div>');
+  hg.insertAdjacentHTML('beforeend','<div class="hcard"><div class="cover'+((k+1)%3===0?' g':'')+'">'+svg+'<b>'+h.n.toUpperCase()+'</b></div><div><h3>'+(k+1)+'. '+h.n+'</h3><ul>'+h.c.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><p class="from">Sale de: <b>'+h.f+'</b></p></div></div>');
+});
+  var stage=document.getElementById('stage'),b=document.getElementById('btn-before'),a=document.getElementById('btn-after');
+  function set(v){stage.setAttribute('data-view',v);b.setAttribute('aria-pressed',v==='before');a.setAttribute('aria-pressed',v==='after');}
+  b.addEventListener('click',function(){set('before')});a.addEventListener('click',function(){set('after')});
+})();
+</script>
+</body>
+</html>
